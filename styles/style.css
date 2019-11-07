@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    display: flex;
+}
+
+#crt-container {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding: 20px;
+}
+
+#ws-container {
+    flex: 1;
+}
+
+#crt-form, #styl-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.crt-form-element {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
+
+.btn {
+    min-width: 45px;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.input {
+    font-size: 16px;
+}
+
+.crt-txtinput {
+    padding: 10px;
+}
+
+.crt-select {
+    height: 30px;
+}

@@ -18,8 +18,8 @@ function createElement(e){
 	e.preventDefault();
 	let tag = $('#crt-select').val();
 	let id= createElementId(tag);
-	let txt = $('#crt-txt').val();
-	$('body').append(`<${tag} id= ${id} class= 'all'> ${txt} </${tag}>`);
+    let txt = $('#crt-txtinput').val();
+	$('#ws-container').append(`<${tag} id= ${id} class= 'all'> ${txt} </${tag}>`);
 	elementsIds.push(id); //push the element in elementsIds so user will be able to remove it later
 	$(`.all`).on('click', getElementToStyle);
 }

@@ -2,35 +2,43 @@
     <html>
     <head>
         <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="styles/style.css">
     </head>
     <body>
         <div id= 'crt-container'>
             <form id= 'crt-form'>
-                <select id= 'crt-select' name= 'element'>
-                <option value= 'h1'>h1</option>
-                <option value= 'h2'>h2</option>
-                <option value= 'h2'>h3</option>
-                <option value= 'h2'>h4</option>
-                <option value= 'h2'>h5</option>
-                <option value= 'p'>p</option>
-                <option value= 'button'>button</option>
-                </select>
-                <input type= 'text' id= 'crt-txt'>
-                <button id= 'btn-crt'>create</button>
+                <div class= 'crt-form-element'>
+                    <label for= 'crt-select'>Pick Element</label>
+                    <select class= 'input' id= 'crt-select' name= 'element'>
+                        <option value= 'h1'>h1</option>
+                        <option value= 'h2'>h2</option>
+                        <option value= 'h2'>h3</option>
+                        <option value= 'h2'>h4</option>
+                        <option value= 'h2'>h5</option>
+                        <option value= 'p'>p</option>
+                        <option value= 'button'>button</option>
+                    </select>
+                </div>
+                <div class= 'crt-form-element'>
+                    <label for= 'crt-txt'>Text</label>
+                    <input type= 'text' id= 'crt-txtinput' class= 'input'>
+                </div>
+                <button class= 'btn btn-crt'>create</button>
             </form>
-            <form id= "styl-form">
-                <input type="color" id= 'styl-color'>
-                <input type="text" id= 'styl-fontSize'>
-                <input type="text" id= 'margin-top'>
-                <input type="text" id= 'margin-right'>
-                <input type="text" id= 'margin-bottom'>
-                <input type="text" id= 'margin-left'>
+            <form id= 'styl-form'>
+                <input type= 'color' id= 'styl-color'>
+                <input type= 'text' id= 'styl-fontSize'>
+                <input type= 'text' id= 'margin-top'>
+                <input type= 'text' id= 'margin-right'>
+                <input type= 'text' id= 'margin-bottom'>
+                <input type= 'text' id= 'margin-left'>
                 <button id= 'btn-styl'>implement</button>
             </form>
+            <button class= 'btn'>Delet Last Element</button>
         </div>
-        <div id= 'container'>
+        <div id= 'ws-container'>
         </div>
-        <button id="btn">remove</button>
         <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
