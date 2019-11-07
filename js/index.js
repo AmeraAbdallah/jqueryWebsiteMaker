@@ -13,11 +13,28 @@ function getElementToStyle(e){
 	pickedElementId = e.target.id;
 }
 
+//change the text input to textarea and oppisit when needed it >> after picking element
+function appendTextArea(tag){
+    $('#txt-input-place').html('');
+    if(tag === 'p'){
+        $('#txt-input-place').append('<label for= "crt-txt">Text</label>');
+        $('#txt-input-place').append('<textarea id= "crt-txtinput"></textarea>');
+    } else {
+        $('#txt-input-place').append('<label for= "crt-txt">Text</label>');
+        $('#txt-input-place').append('<input type= "text id= "crt-txtinput" class= "input">'); 
+    }
+}
+
+$('#crt-select').on('change', function(){
+    appendTextArea($('#crt-select').val());
+});
+
 //create the element using form data
 function createElement(e){
 	e.preventDefault();
 	let tag = $('#crt-select').val();
-	let id= createElementId(tag);
+    let id= createElementId(tag);
+    
     let txt = $('#crt-txtinput').val();
 	$('#ws-container').append(`<${tag} id= ${id} class= 'all'> ${txt} </${tag}>`);
 	elementsIds.push(id); //push the element in elementsIds so user will be able to remove it later
