@@ -42,3 +42,12 @@ body {
 .crt-select {
     height: 30px;
 }
+
+.styl-form-elment {
+    display: flex;
+}
+
+.inp-num {
+    width: 30px;
+    height: 25px;
+}

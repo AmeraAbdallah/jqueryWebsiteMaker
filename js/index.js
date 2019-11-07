@@ -10,7 +10,8 @@ function createElementId(tagName){
 
 //save element inside pickedElementId when user click on it
 function getElementToStyle(e){
-	pickedElementId = e.target.id;
+    pickedElementId = e.target.id;
+    showStylesBox();
 }
 
 //change the text input to textarea and oppisit when needed it >> after picking element
@@ -21,7 +22,7 @@ function appendTextArea(tag){
         $('#txt-input-place').append('<textarea id= "crt-txtinput"></textarea>');
     } else {
         $('#txt-input-place').append('<label for= "crt-txt">Text</label>');
-        $('#txt-input-place').append('<input type= "text id= "crt-txtinput" class= "input">'); 
+        $('#txt-input-place').append('<input type= "text" id= "crt-txtinput" class= "input">'); 
     }
 }
 
@@ -36,6 +37,7 @@ function createElement(e){
     let id= createElementId(tag);
     
     let txt = $('#crt-txtinput').val();
+    console.log(txt)
 	$('#ws-container').append(`<${tag} id= ${id} class= 'all'> ${txt} </${tag}>`);
 	elementsIds.push(id); //push the element in elementsIds so user will be able to remove it later
 	$(`.all`).on('click', getElementToStyle);
@@ -44,18 +46,63 @@ function createElement(e){
 //call createElement on submit
 $('#crt-form').on('submit', createElement);
 
+function showStylesBox(){
+    let elements = 
+    `<div class= 'styl-form-elment'>
+        <label>font color</label>
+        <input type= 'color' id= 'styl-color'>
+    </div>
+    <div class= 'styl-form-elment'>
+        <label>background color</label>
+        <input type= 'color' id= 'styl-backgroun-color'>
+    </div>
+    <div class= 'styl-form-elment'>
+        <label>font size</label>
+        <input type= 'number' id= 'styl-fontSize' step= '1' class= 'inp-num'>
+    </div>
+    <div class= 'styl-form-elment'>
+        <label>margin</label>
+        <input type= 'number' id= 'margin-top' step= '1' class= 'inp-num'>
+        <input type= 'number' id= 'margin-right' step= '1' class= 'inp-num'>
+        <input type= 'number' id= 'margin-bottom' step= '1' class= 'inp-num'>
+        <input type= 'number' id= 'margin-left' step= '1' class= 'inp-num'>
+    </div>
+    <div class= 'styl-form-elment'>
+        <label>padding</label>
+        <input type= 'number' id= 'padding-top' step= '1' class= 'inp-num'>
+        <input type= 'number' id= 'padding-right' step= '1' class= 'inp-num'>
+        <input type= 'number' id= 'padding-bottom' step= '1' class= 'inp-num'>
+        <input type= 'number' id= 'padding-left' step= '1' class= 'inp-num'>
+    </div>
+    <div class= 'styl-form-elment'>
+        <label>align</label>
+        <select class= 'input' id= 'crt-align-select'>
+            <option value= 'center'>center</option>
+            <option value= 'right'>right</option>
+            <option value= 'left'>left</option>
+        </select>
+    </div>
+    <button id= 'btn-styl'>implement</button>`;
+    let elementsDom = $(elements);
+    $('#styl-form').html('');
+    $('#styl-form').append(elementsDom);
+}
 //style the picked element in pickedElementId variable
 function styleElement(e){
 	e.preventDefault();
 	let fontSize = $('#styl-fontSize').val();	
-	let color = $('#styl-color').val();
+    let color = $('#styl-color').val();
+    let align = $('#crt-align-select').val();
+    let background_color = $('#styl-backgroun-color').val();
 	let margin_top = $('#margin-top').val();
 	let margin_right = $('#margin-right').val();
 	let margin_bottom = $('#margin-bottom').val();
     let margin_left = $('#margin-left').val();
     
 	$(`#${pickedElementId}`).css({
-		'fontSize': fontSize + 'px',
+        'fontSize': fontSize + 'px',
+        'background-color': background_color,
+        'text-align': align,
         'color': color,
         'margin-top': margin_top + 'px',
         'margin-right': margin_right + 'px',
