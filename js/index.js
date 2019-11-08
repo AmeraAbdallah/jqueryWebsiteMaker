@@ -94,6 +94,14 @@ function showStylesBox(){
         <input type= 'number' id= 'padding-left' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('padding-left'))}'>
     </div>
     <div class= 'styl-form-elment'>
+        <label>width</label>
+        <input type= 'number' id= 'width' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('width'))}'>
+    </div>
+    <div class= 'styl-form-elment'>
+        <label>height</label>
+        <input type= 'number' id= 'height' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('height'))}'>
+    </div>
+    <div class= 'styl-form-elment'>
         <label>align</label>
         <select class= 'input' id= 'crt-align-select'>
             <option value= 'center' ${pickedElement.css('text-align') == 'center' ? 'selected' : ''} >center</option>
@@ -103,8 +111,7 @@ function showStylesBox(){
     </div>
     <div class= 'styl-form-elment'>
         <label>font family</label>
-        <select id= 'crt-font-family-select'>
-        </select>
+        <select id= 'crt-font-family-select'></select>
     </div>
     <div class= 'styl-form-elment'>
         <label>display</label>
@@ -151,7 +158,9 @@ function styleElement(e){
     let margin_left = $('#margin-left').val();
     let fontFamily = $('#crt-font-family-select').val();
     let display = $('#crt-display-select').val();
-
+    let width = $('#width').val();
+    let height = $('#height').val();
+    
 	$(`#${pickedElementId}`).css({
         'fontSize': fontSize + 'px',
         'text-align': align,
@@ -160,7 +169,9 @@ function styleElement(e){
         'margin-bottom': margin_bottom + 'px',
         'margin-left': margin_left + 'px',
         'font-family': fontFamily,
-        'display': display
+        'display': display,
+        'width': width + 'px',
+        'height': height + 'px'
 	});
 }
 
