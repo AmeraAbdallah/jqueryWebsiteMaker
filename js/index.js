@@ -15,11 +15,15 @@ function getElementToStyle(e){
 }
 
 //change the text input to textarea and oppisit when needed it >> after picking element
+//now it works with images too
 function appendTextArea(tag){
     $('#txt-input-place').html('');
     if(tag === 'p'){
         $('#txt-input-place').append('<label for= "crt-txt">Text</label>');
         $('#txt-input-place').append('<textarea id= "crt-txtinput"></textarea>');
+    } else if (tag === 'img'){
+        $('#txt-input-place').append('<label for= "crt-txt">image link</label>');
+        $('#txt-input-place').append('<input id= "crt-txtinput" type= "text">');
     } else {
         $('#txt-input-place').append('<label for= "crt-txt">Text</label>');
         $('#txt-input-place').append('<input type= "text" id= "crt-txtinput" class= "input">'); 
@@ -35,10 +39,12 @@ function createElement(e){
 	e.preventDefault();
 	let tag = $('#crt-select').val();
     let id= createElementId(tag);
-    
     let txt = $('#crt-txtinput').val();
-    console.log(txt)
-	$('#ws-container').append(`<${tag} id= ${id} class= 'all'> ${txt} </${tag}>`);
+    if(tag === 'img'){
+        $('#ws-container').append(`<${tag} id= ${id} src= ${txt} class= 'all'>`)
+    } else {
+        $('#ws-container').append(`<${tag} id= ${id} class= 'all'> ${txt} </${tag}>`);
+    }
 	elementsIds.push(id); //push the element in elementsIds so user will be able to remove it later
 	$(`.all`).on('click', getElementToStyle);
 }
