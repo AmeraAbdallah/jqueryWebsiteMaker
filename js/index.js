@@ -84,10 +84,18 @@ function showStylesBox(){
             <option value= 'end'  ${pickedElement.css('text-align') == 'end' ? 'selected' : ''} >end</option>
         </select>
     </div>
+    <div class= 'styl-form-elment'>
+        <label>font family</label>
+        <select id= 'crt-align-font-family'>
+        </select>
+    </div>
     <button class= 'btn btn-styl'>implement</button>`;
     let elementsDom = $(elements);
     $('#styl-form').html('');
     $('#styl-form').append(elementsDom);
+    fonts.map(function(element){
+        $('#crt-align-font-family').append(`<option value= ${element}  ${pickedElement.css('font-family') == element ? 'selected' : ''} >${element}</option>`);
+    });
 }
 //style the picked element in pickedElementId variable
 function styleElement(e){
@@ -100,7 +108,7 @@ function styleElement(e){
 	let margin_right = $('#margin-right').val();
 	let margin_bottom = $('#margin-bottom').val();
     let margin_left = $('#margin-left').val();
-    
+    let fontFamily = $('#crt-align-font-family').val();
 	$(`#${pickedElementId}`).css({
         'fontSize': fontSize + 'px',
         'background-color': background_color,
@@ -109,7 +117,8 @@ function styleElement(e){
         'margin-top': margin_top + 'px',
         'margin-right': margin_right + 'px',
         'margin-bottom': margin_bottom + 'px',
-        'margin-left': margin_left + 'px'
+        'margin-left': margin_left + 'px',
+        'font-family': fontFamily
 	});
 }
 
@@ -118,7 +127,7 @@ $('#styl-form').on('submit', styleElement);
 
 //remove last added element >> 
 //todo: add listner for command + z
-$('#btn').on('click', function(){
+$('#btn-removeLastElement').on('click', function(){
 	$(`#${elementsIds[elementsIds.length-1]}`).remove();
 	elementsIds.pop();
 });
