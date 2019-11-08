@@ -81,17 +81,21 @@ function showStylesBox(){
     </div>
     <div class= 'styl-form-elment'>
         <label>margin</label>
-        <input type= 'number' id= 'margin-top' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('margin-top'))}'>
-        <input type= 'number' id= 'margin-right' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('margin-right'))}'>
-        <input type= 'number' id= 'margin-bottom' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('margin-bottom'))}'>
-        <input type= 'number' id= 'margin-left' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('margin-left'))}'>
+        <div>
+            <input type= 'number' id= 'margin-top' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('margin-top'))}'>
+            <input type= 'number' id= 'margin-right' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('margin-right'))}'>
+            <input type= 'number' id= 'margin-bottom' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('margin-bottom'))}'>
+            <input type= 'number' id= 'margin-left' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('margin-left'))}'>
+        </div>
     </div>
     <div class= 'styl-form-elment'>
         <label>padding</label>
-        <input type= 'number' id= 'padding-top' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('padding-top'))}'>
-        <input type= 'number' id= 'padding-right' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('padding-right'))}'>
-        <input type= 'number' id= 'padding-bottom' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('padding-bottom'))}'>
-        <input type= 'number' id= 'padding-left' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('padding-left'))}'>
+        <div>
+            <input type= 'number' id= 'padding-top' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('padding-top'))}'>
+            <input type= 'number' id= 'padding-right' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('padding-right'))}'>
+            <input type= 'number' id= 'padding-bottom' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('padding-bottom'))}'>
+            <input type= 'number' id= 'padding-left' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('padding-left'))}'>
+        </div>
     </div>
     <div class= 'styl-form-elment'>
         <label>width</label>
@@ -160,7 +164,7 @@ function styleElement(e){
     let display = $('#crt-display-select').val();
     let width = $('#width').val();
     let height = $('#height').val();
-    
+
 	$(`#${pickedElementId}`).css({
         'fontSize': fontSize + 'px',
         'text-align': align,
