@@ -119,6 +119,21 @@ function showStylesBox(){
     $('#styl-form').html('');
     $('#styl-form').append(elementsDom);
     appendFontsIn('crt-font-family-select', pickedElement);
+
+$('#styl-color').on('change', function(){
+    let color = $('#styl-color').val();
+    $(`#${pickedElementId}`).css({
+        'color': color
+    });
+});
+
+$('#styl-backgroun-color').on('change', function(){
+    let background_color = $('#styl-backgroun-color').val();
+    $(`#${pickedElementId}`).css({
+        'background-color': background_color,
+    });
+});
+
 }
 
 function hideStyleBox(){
@@ -129,9 +144,7 @@ function hideStyleBox(){
 function styleElement(e){
 	e.preventDefault();
 	let fontSize = $('#styl-fontSize').val();	
-    let color = $('#styl-color').val();
     let align = $('#crt-align-select').val();
-    let background_color = $('#styl-backgroun-color').val();
 	let margin_top = $('#margin-top').val();
 	let margin_right = $('#margin-right').val();
 	let margin_bottom = $('#margin-bottom').val();
@@ -141,9 +154,7 @@ function styleElement(e){
 
 	$(`#${pickedElementId}`).css({
         'fontSize': fontSize + 'px',
-        'background-color': background_color,
         'text-align': align,
-        'color': color,
         'margin-top': margin_top + 'px',
         'margin-right': margin_right + 'px',
         'margin-bottom': margin_bottom + 'px',
