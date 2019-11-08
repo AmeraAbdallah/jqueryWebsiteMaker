@@ -92,7 +92,15 @@ function showStylesBox(){
     </div>
     <div class= 'styl-form-elment'>
         <label>font family</label>
-        <select id= 'crt-align-font-family'>
+        <select id= 'crt-font-family-select'>
+        </select>
+    </div>
+    <div class= 'styl-form-elment'>
+        <label>display</label>
+        <select id= 'crt-display-select'>
+            <option value= 'inline' ${pickedElement.css('display') == 'inline' ? 'selected' : ''} >inline</option>
+            <option value= 'block' ${pickedElement.css('display') == 'block' ? 'selected' : ''} >block</option>
+            <option value= 'inline-block' ${pickedElement.css('display') == 'inline-block' ? 'selected' : ''} >inline-block</option>
         </select>
     </div>
     <button class= 'btn btn-styl'>implement</button>`;
@@ -100,7 +108,7 @@ function showStylesBox(){
     $('#styl-form').html('');
     $('#styl-form').append(elementsDom);
     fonts.map(function(element){
-        $('#crt-align-font-family').append(`<option value= ${element}  ${pickedElement.css('font-family') == element ? 'selected' : ''} >${element}</option>`);
+        $('#crt-font-family-select').append(`<option value= ${element}  ${pickedElement.css('font-family') == element ? 'selected' : ''} >${element}</option>`);
     });
 }
 //style the picked element in pickedElementId variable
@@ -114,7 +122,9 @@ function styleElement(e){
 	let margin_right = $('#margin-right').val();
 	let margin_bottom = $('#margin-bottom').val();
     let margin_left = $('#margin-left').val();
-    let fontFamily = $('#crt-align-font-family').val();
+    let fontFamily = $('#crt-font-family').val();
+    let display = $('#crt-display-select').val();
+
 	$(`#${pickedElementId}`).css({
         'fontSize': fontSize + 'px',
         'background-color': background_color,
@@ -124,7 +134,8 @@ function styleElement(e){
         'margin-right': margin_right + 'px',
         'margin-bottom': margin_bottom + 'px',
         'margin-left': margin_left + 'px',
-        'font-family': fontFamily
+        'font-family': fontFamily,
+        'display': display
 	});
 }
 
