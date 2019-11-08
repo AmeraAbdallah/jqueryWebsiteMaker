@@ -149,5 +149,10 @@ $('#btn-removeLastElement').on('click', function(){
 	elementsIds.pop();
 });
 
+//change backgroun color
+$('#crt-bdy-backgroun-color').on('change', function(){
+    let color = $('#crt-bdy-backgroun-color').val();
+    $('#ws-container').css('background-color', color);
+});
 
 
