@@ -28,13 +28,13 @@ appendFontsIn('crt-bdy-font-family-select', $(`#${pickedElementId}`));
 function appendTextArea(tag){
     $('#txt-input-place').html('');
     if(tag === 'p'){
-        $('#txt-input-place').append('<label for= "crt-txt">Text</label>');
+        $('#txt-input-place').append('<label for= "crt-txtinput">Text</label>');
         $('#txt-input-place').append('<textarea id= "crt-txtinput"></textarea>');
     } else if (tag === 'img'){
-        $('#txt-input-place').append('<label for= "crt-txt">image link</label>');
+        $('#txt-input-place').append('<label for= "crt-txtinput">image link</label>');
         $('#txt-input-place').append('<input id= "crt-txtinput" type= "text">');
     } else {
-        $('#txt-input-place').append('<label for= "crt-txt">Text</label>');
+        $('#txt-input-place').append('<label for= "crt-txtinput">Text</label>');
         $('#txt-input-place').append('<input type= "text" id= "crt-txtinput" class= "input">'); 
     }
 }
@@ -157,6 +157,10 @@ $('#btn-removeLastElement').on('click', function(){
 	elementsIds.pop();
 });
 
+$('#crt-bdy-form').on('submit', function(e){
+    e.preventDefault();
+});
+
 //change backgroun color
 $('#crt-bdy-backgroun-color').on('change', function(){
     let color = $('#crt-bdy-backgroun-color').val();
@@ -166,5 +170,18 @@ $('#crt-bdy-backgroun-color').on('change', function(){
 $('#crt-bdy-font-family-select').on('change', function(){
     let font = $('#crt-bdy-font-family-select').val();
     $('#ws-container').css('font-family', font)
+});
+
+$('#crt-bdy-font-color').on('change', function(){
+    let color = $('#crt-bdy-font-color').val();
+    $('#ws-container').css('color', color);
+});
+
+$('#btn-crt-bdy-bg-img').on('click', function(){
+    let src = $('#crt-bdy-bg-img-src').val();
+    $('#ws-container').css({
+        'background-image': `url("${src}")`,
+        'background-size': 'cover'
+    });
 });
 
