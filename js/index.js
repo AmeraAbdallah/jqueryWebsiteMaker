@@ -124,63 +124,101 @@ function showStylesBox(){
             <option value= 'block' ${pickedElement.css('display') == 'block' ? 'selected' : ''} >block</option>
             <option value= 'inline-block' ${pickedElement.css('display') == 'inline-block' ? 'selected' : ''} >inline-block</option>
         </select>
-    </div>
-    <button class= 'btn btn-styl'>implement</button>`;
+    </div>`;
+
     let elementsDom = $(elements);
     $('#styl-form').html('');
     $('#styl-form').append(elementsDom);
     appendFontsIn('crt-font-family-select', pickedElement);
 
-$('#styl-color').on('change', function(){
-    let color = $('#styl-color').val();
-    $(`#${pickedElementId}`).css({
-        'color': color
+    $('#styl-color').on('change', function(){
+        let color = $('#styl-color').val();
+        $(`#${pickedElementId}`).css({
+            'color': color
+        });
     });
-});
 
-$('#styl-backgroun-color').on('change', function(){
-    let background_color = $('#styl-backgroun-color').val();
-    $(`#${pickedElementId}`).css({
-        'background-color': background_color,
+    $('#styl-backgroun-color').on('change', function(){
+        let background_color = $('#styl-backgroun-color').val();
+        $(`#${pickedElementId}`).css({
+            'background-color': background_color,
+        });
     });
-});
 
+    $('#styl-fontSize').on('change', function(){
+        let fontSize = $('#styl-fontSize').val();	
+        $(`#${pickedElementId}`).css('fontSize', fontSize + 'px');
+    });
+
+    $('#crt-align-select').on('change', function(){
+        let align = $('#crt-align-select').val();
+        $(`#${pickedElementId}`).css('text-align', align);
+    });
+
+    $('#margin-top').on('change', function(){
+        let margin_top = $('#margin-top').val();
+        $(`#${pickedElementId}`).css('margin-top', margin_top + 'px');
+    });
+
+    $('#margin-right').on('change', function(){
+        let margin_right = $('#margin-right').val();
+        $(`#${pickedElementId}`).css('margin-right', margin_right + 'px');
+    });
+
+    $('#margin-bottom').on('change', function(){
+        let margin_bottom = $('#margin-bottom').val();
+        $(`#${pickedElementId}`).css('margin-bottom', margin_bottom + 'px');
+    });
+
+    $('#margin-left').on('change', function(){
+        let margin_left = $('#margin-left').val();
+        $(`#${pickedElementId}`).css('margin-left', margin_left + 'px');
+    });
+
+    $('#padding-top').on('change', function(){
+        let padding_top = $('#padding-top').val();
+        $(`#${pickedElementId}`).css('padding-top', padding_top + 'px');
+    });
+
+    $('#padding-right').on('change', function(){
+        let padding_right = $('#padding-right').val();
+        $(`#${pickedElementId}`).css('padding-right', padding_right + 'px');
+    });
+
+    $('#padding-bottom').on('change', function(){
+        let padding_bottom = $('#padding-bottom').val();
+        $(`#${pickedElementId}`).css('padding-bottom', padding_bottom + 'px');
+    });
+
+    $('#padding-left').on('change', function(){
+        let padding_left = $('#padding-left').val();
+        $(`#${pickedElementId}`).css('padding-left', padding_left + 'px');
+    });
+
+    $('#crt-font-family-select').on('change', function(){
+        let fontFamily = $('#crt-font-family-select').val();
+        $(`#${pickedElementId}`).css('font-family', fontFamily)
+    });
+
+    $('#crt-display-select').on('change', function(){
+        let display = $('#crt-display-select').val();
+        $(`#${pickedElementId}`).css('display', display)
+    });
+
+    $('#width').on('change', function(){
+        let width = $('#width').val();
+        $(`#${pickedElementId}`).css('width', width + 'px',)
+    });
+    
+    $('#height').on('change', function(){
+        let height = $('#height').val();
+        $(`#${pickedElementId}`).css('height', height + 'px',)
+    });
 }
 
 function hideStyleBox(){
     $('#styl-form').html('');
 }
-
-//style the picked element in pickedElementId variable
-function styleElement(e){
-	e.preventDefault();
-	let fontSize = $('#styl-fontSize').val();	
-    let align = $('#crt-align-select').val();
-	let margin_top = $('#margin-top').val();
-	let margin_right = $('#margin-right').val();
-	let margin_bottom = $('#margin-bottom').val();
-    let margin_left = $('#margin-left').val();
-    let fontFamily = $('#crt-font-family-select').val();
-    let display = $('#crt-display-select').val();
-    let width = $('#width').val();
-    let height = $('#height').val();
-
-	$(`#${pickedElementId}`).css({
-        'fontSize': fontSize + 'px',
-        'text-align': align,
-        'margin-top': margin_top + 'px',
-        'margin-right': margin_right + 'px',
-        'margin-bottom': margin_bottom + 'px',
-        'margin-left': margin_left + 'px',
-        'font-family': fontFamily,
-        'display': display,
-        'width': width + 'px',
-        'height': height + 'px'
-	});
-}
-
-//call styleElement when form style submit
-$('#styl-form').on('submit', styleElement);
 
 //remove last added element >> 
 //todo: add listner for command + z
