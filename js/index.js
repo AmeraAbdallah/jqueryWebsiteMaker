@@ -10,8 +10,10 @@ function createElementId(tagName){
 
 //save element inside pickedElementId when user click on it
 function getElementToStyle(e){
+    unselect();
     pickedElementId = e.target.id;
     showStylesBox();
+    $('#'+pickedElementId).css({'border': '1px solid blue'});
 }
 
 function appendFontsIn(id, pickedElement){
@@ -189,8 +191,10 @@ $('#btn-crt-bdy-bg-img').on('click', function(){
     });
 });
 
-$('#btn-unselect').on('click', function(){
+function unselect(){
+    $('#'+pickedElementId).css({'border': 'none'});
     pickedElementId = undefined;
     hideStyleBox();
-});
+}
+$('#btn-unselect').on('click', unselect);
 
