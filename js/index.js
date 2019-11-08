@@ -47,42 +47,44 @@ function createElement(e){
 $('#crt-form').on('submit', createElement);
 
 function showStylesBox(){
+    let pickedElement = $(`#${pickedElementId}`);
+    console.log(pickedElement.css('text-align'));
     let elements = 
     `<div class= 'styl-form-elment'>
         <label>font color</label>
-        <input type= 'color' id= 'styl-color'>
+        <input type= 'color' id= 'styl-color' value='#000000'>
     </div>
     <div class= 'styl-form-elment'>
         <label>background color</label>
-        <input type= 'color' id= 'styl-backgroun-color'>
+        <input type= 'color' id= 'styl-backgroun-color' value='#FFFFFF'>
     </div>
     <div class= 'styl-form-elment'>
         <label>font size</label>
-        <input type= 'number' id= 'styl-fontSize' step= '1' class= 'inp-num'>
+        <input type= 'number' id= 'styl-fontSize' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('fontSize'))}'>
     </div>
     <div class= 'styl-form-elment'>
         <label>margin</label>
-        <input type= 'number' id= 'margin-top' step= '1' class= 'inp-num'>
-        <input type= 'number' id= 'margin-right' step= '1' class= 'inp-num'>
-        <input type= 'number' id= 'margin-bottom' step= '1' class= 'inp-num'>
-        <input type= 'number' id= 'margin-left' step= '1' class= 'inp-num'>
+        <input type= 'number' id= 'margin-top' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('margin-top'))}'>
+        <input type= 'number' id= 'margin-right' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('margin-right'))}'>
+        <input type= 'number' id= 'margin-bottom' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('margin-bottom'))}'>
+        <input type= 'number' id= 'margin-left' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('margin-left'))}'>
     </div>
     <div class= 'styl-form-elment'>
         <label>padding</label>
-        <input type= 'number' id= 'padding-top' step= '1' class= 'inp-num'>
-        <input type= 'number' id= 'padding-right' step= '1' class= 'inp-num'>
-        <input type= 'number' id= 'padding-bottom' step= '1' class= 'inp-num'>
-        <input type= 'number' id= 'padding-left' step= '1' class= 'inp-num'>
+        <input type= 'number' id= 'padding-top' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('padding-top'))}'>
+        <input type= 'number' id= 'padding-right' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('padding-right'))}'>
+        <input type= 'number' id= 'padding-bottom' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('padding-bottom'))}'>
+        <input type= 'number' id= 'padding-left' step= '1' class= 'inp-num' value= '${parseInt(pickedElement.css('padding-left'))}'>
     </div>
     <div class= 'styl-form-elment'>
         <label>align</label>
         <select class= 'input' id= 'crt-align-select'>
-            <option value= 'center'>center</option>
-            <option value= 'right'>right</option>
-            <option value= 'left'>left</option>
+            <option value= 'center' ${pickedElement.css('text-align') == 'center' ? 'selected' : ''} >center</option>
+            <option value= 'start' ${pickedElement.css('text-align') == 'start' ? 'selected' : ''}  >start</option>
+            <option value= 'end'  ${pickedElement.css('text-align') == 'end' ? 'selected' : ''} >end</option>
         </select>
     </div>
-    <button id= 'btn-styl'>implement</button>`;
+    <button class= 'btn btn-styl'>implement</button>`;
     let elementsDom = $(elements);
     $('#styl-form').html('');
     $('#styl-form').append(elementsDom);
