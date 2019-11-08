@@ -8,10 +8,13 @@ body {
     flex-direction: column;
     width: 20%;
     padding: 20px;
+    /*overflow-y: scroll;*/
 }
 
 #ws-container {
     flex: 1;
+    height: 100vh;
+    overflow-y: scroll;
 }
 
 #crt-form, #styl-form {
