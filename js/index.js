@@ -14,6 +14,15 @@ function getElementToStyle(e){
     showStylesBox();
 }
 
+function appendFontsIn(id, pickedElement){
+    fonts.map(function(element){
+        $('#'+id).append(`<option value= ${element}  ${pickedElement.css('font-family') == element ? 'selected' : ''} >${element}</option>`)
+    });
+}
+
+appendFontsIn('crt-bdy-font-family-select', $(`#${pickedElementId}`));
+
+
 //change the text input to textarea and oppisit when needed it >> after picking element
 //now it works with images too
 function appendTextArea(tag){
@@ -107,10 +116,9 @@ function showStylesBox(){
     let elementsDom = $(elements);
     $('#styl-form').html('');
     $('#styl-form').append(elementsDom);
-    fonts.map(function(element){
-        $('#crt-font-family-select').append(`<option value= ${element}  ${pickedElement.css('font-family') == element ? 'selected' : ''} >${element}</option>`);
-    });
+    appendFontsIn('crt-font-family-select', pickedElement);
 }
+
 //style the picked element in pickedElementId variable
 function styleElement(e){
 	e.preventDefault();
@@ -122,7 +130,7 @@ function styleElement(e){
 	let margin_right = $('#margin-right').val();
 	let margin_bottom = $('#margin-bottom').val();
     let margin_left = $('#margin-left').val();
-    let fontFamily = $('#crt-font-family').val();
+    let fontFamily = $('#crt-font-family-select').val();
     let display = $('#crt-display-select').val();
 
 	$(`#${pickedElementId}`).css({
@@ -155,4 +163,8 @@ $('#crt-bdy-backgroun-color').on('change', function(){
     $('#ws-container').css('background-color', color);
 });
 
+$('#crt-bdy-font-family-select').on('change', function(){
+    let font = $('#crt-bdy-font-family-select').val();
+    $('#ws-container').css('font-family', font)
+});
 
