@@ -119,6 +119,10 @@ function showStylesBox(){
     appendFontsIn('crt-font-family-select', pickedElement);
 }
 
+function hideStyleBox(){
+    $('#styl-form').html('');
+}
+
 //style the picked element in pickedElementId variable
 function styleElement(e){
 	e.preventDefault();
@@ -183,5 +187,10 @@ $('#btn-crt-bdy-bg-img').on('click', function(){
         'background-image': `url("${src}")`,
         'background-size': 'cover'
     });
+});
+
+$('#btn-unselect').on('click', function(){
+    pickedElementId = undefined;
+    hideStyleBox();
 });
 

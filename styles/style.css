@@ -3,6 +3,10 @@ body {
     display: flex;
 }
 
+.all {
+    cursor: pointer;
+}
+
 #crt-container {
     display: flex;
     flex-direction: column;
