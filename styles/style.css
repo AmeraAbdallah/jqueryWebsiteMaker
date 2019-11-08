@@ -22,6 +22,7 @@ body {
     flex: 1;
     height: 100vh;
     overflow-y: scroll;
+    position: relative;
 }
 
 #crt-form, #styl-form {
@@ -45,6 +46,19 @@ label {
     padding: 5px 0;
     color: #FFF;
     font-size: 14px;
+}
+
+#toggle-crt-container {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 20px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: #ccc;
 }
 
 .input {

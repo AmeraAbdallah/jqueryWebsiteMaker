@@ -222,5 +222,18 @@ function unselect(){
     pickedElementId = undefined;
     hideStyleBox();
 }
+
 $('#btn-unselect').on('click', unselect);
+
+function toggleCrtContainer(){
+    if($('#crt-container').css('display') === 'none'){
+        $('#crt-container').show();
+        $('#toggle-crt-container').html('-');
+    } else {
+        $('#crt-container').hide();
+        $('#toggle-crt-container').html('+');
+    }
+}
+
+$('#toggle-crt-container').on('click', toggleCrtContainer);
 
