@@ -2,11 +2,47 @@ let elementsIds = []
 let elementsIdsCounter = -1;
 let pickedElementId; 
 
+let containersCounter = 1;
+let containers = [{name: 'body', id: 'ws-container'}];
+let pickedContainer = containers[0];
 //generate id for each element
 function createElementId(tagName){
 	++elementsIdsCounter;
 	return tagName + '-' + elementsIdsCounter;
 }
+
+function createContainer(name){
+    let container = {
+        name,
+        id: 'container' + '-' + containersCounter
+    }
+    containers.push(container);
+    $('#ws-container').append(`<div class= 'container' id= '${container.id}'></div>`);
+    renderContainerSelectorOptions();
+    ++containersCounter;
+}
+
+function renderContainerSelectorOptions(){
+    $('#crt-bdy-container-select').html('');
+    containers.map((container) => {
+        $('#crt-bdy-container-select').append(`<option value= ${container.id}  ${pickedContainer.id === container.id ? 'selected' : ''} >${container.name}</option>`);
+    }); 
+}
+
+renderContainerSelectorOptions();
+
+$('#btn-crt-bdy-container-maker').on('click', function(){
+    createContainer($('#crt-bdy-container-txt').val());
+});
+
+$('#crt-bdy-container-select').on('change', function(){
+    let container = $('#crt-bdy-container-select').val();
+    for(var i = 0; i < containers.length; i++){
+        if(containers[i].id === container){
+            pickedContainer = containers[i];
+        }
+    }
+});
 
 //save element inside pickedElementId when user click on it
 function getElementToStyle(e){
@@ -52,9 +88,9 @@ function createElement(e){
     let id= createElementId(tag);
     let txt = $('#crt-txtinput').val();
     if(tag === 'img'){
-        $('#ws-container').append(`<${tag} id= ${id} src= ${txt} class= 'all'>`)
+        $('#'+pickedContainer.id).append(`<${tag} id= ${id} src= ${txt} class= 'all'>`)
     } else {
-        $('#ws-container').append(`<${tag} id= ${id} class= 'all'> ${txt} </${tag}>`);
+        $('#'+pickedContainer.id).append(`<${tag} id= ${id} class= 'all'> ${txt} </${tag}>`);
     }
 	elementsIds.push(id); //push the element in elementsIds so user will be able to remove it later
 	$(`.all`).on('click', getElementToStyle);
@@ -234,22 +270,22 @@ $('#crt-bdy-form').on('submit', function(e){
 //change backgroun color
 $('#crt-bdy-backgroun-color').on('change', function(){
     let color = $('#crt-bdy-backgroun-color').val();
-    $('#ws-container').css('background-color', color);
+    $('#'+pickedContainer.id).css('background-color', color);
 });
 
 $('#crt-bdy-font-family-select').on('change', function(){
     let font = $('#crt-bdy-font-family-select').val();
-    $('#ws-container').css('font-family', font)
+    $('#'+pickedContainer.id).css('font-family', font);
 });
 
 $('#crt-bdy-font-color').on('change', function(){
     let color = $('#crt-bdy-font-color').val();
-    $('#ws-container').css('color', color);
+    $('#'+pickedContainer.id).css('color', color);
 });
 
 $('#btn-crt-bdy-bg-img').on('click', function(){
     let src = $('#crt-bdy-bg-img-src').val();
-    $('#ws-container').css({
+    $('#'+pickedContainer.id).css({
         'background-image': `url("${src}")`,
         'background-size': 'cover'
     });
@@ -274,4 +310,3 @@ function toggleCrtContainer(){
 }
 
 $('#toggle-crt-container').on('click', toggleCrtContainer);
-

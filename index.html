@@ -4,12 +4,20 @@
         <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Changa|McLaren|Montserrat|Muli|Noto+Serif|Open+Sans+Condensed:300|PT+Sans+Narrow|Playfair+Display|Quicksand|Raleway|Rubik|Source+Sans+Pro|ZCOOL+KuaiLe|ZCOOL+XiaoWei&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="styles/style.css">
-        
+        <link rel="stylesheet" type="text/css" href="styles/style.css">   
     </head>
     <body>
         <div id= 'crt-container'>
-            <form id= 'crt-bdy-form'>
+            <div id= 'crt-bdy-form'>
+                <div class= 'crt-form-element'>
+                    <label>container</label>
+                    <select id= 'crt-bdy-container-select'></select>
+                </div>
+                <div class= 'crt-form-element'>
+                    <label>add container</label>
+                    <input type= 'text' id= 'crt-bdy-container-txt'>
+                    <button id= 'btn-crt-bdy-container-maker'>add container</button>
+                </div>
                 <div class= 'crt-form-element'>
                     <label>background color</label>
                     <input type= 'color' id= 'crt-bdy-backgroun-color' value='#FFFFFF'>
@@ -27,7 +35,7 @@
                     <input class= 'input' id= 'crt-bdy-bg-img-src' type= 'text'>
                     <button class= 'btn' id= 'btn-crt-bdy-bg-img'>set</button>
                 </div>
-            </form>
+            </div>
             <form id= 'crt-form'>
                 <div class= 'crt-form-element'>
                     <label for= 'crt-select'>Pick Element</label>
