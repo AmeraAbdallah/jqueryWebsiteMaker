@@ -5,6 +5,7 @@ let pickedElementId;
 let containersCounter = 1;
 let containers = [{name: 'body', id: 'ws-container'}];
 let pickedContainer = containers[0];
+
 //generate id for each element
 function createElementId(tagName){
 	++elementsIdsCounter;
@@ -33,6 +34,7 @@ renderContainerSelectorOptions();
 
 $('#btn-crt-bdy-container-maker').on('click', function(){
     createContainer($('#crt-bdy-container-txt').val());
+    $('#crt-bdy-container-txt').val('')
 });
 
 $('#crt-bdy-container-select').on('change', function(){
@@ -42,6 +44,32 @@ $('#crt-bdy-container-select').on('change', function(){
             pickedContainer = containers[i];
         }
     }
+});
+
+function generateHeader(){
+    if(containers.length <= 1){
+        return;
+    }
+    let header = $(`<header id= 'header'></header>`);
+    containers.map(function(container){
+        console.log(container)
+        if(container.name !== 'body'){
+            header.append(`<a class= 'header-title' href= '#${container.id}'>${container.name}</a>`);
+        }
+    });
+    $('#ws-container').append(header);
+    
+    $('#crt-header-backgroun-color').on('change', function(){
+        $('#header').css('background-color', $('#crt-header-backgroun-color').val());
+    });
+
+    $('#crt-header-font-color').on('change', function(){
+        $('.header-title').css('color', $('#crt-header-font-color').val());
+    });
+}
+
+$('#btn-crt-header-generator').on('click', function(){
+    generateHeader();
 });
 
 //save element inside pickedElementId when user click on it
@@ -93,7 +121,8 @@ function createElement(e){
         $('#'+pickedContainer.id).append(`<${tag} id= ${id} class= 'all'> ${txt} </${tag}>`);
     }
 	elementsIds.push(id); //push the element in elementsIds so user will be able to remove it later
-	$(`.all`).on('click', getElementToStyle);
+    $(`.all`).on('click', getElementToStyle);
+    $('#crt-txtinput').val('');
 }
 
 //call createElement on submit
